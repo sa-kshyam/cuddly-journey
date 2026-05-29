@@ -30,20 +30,20 @@
                 <div class="prompt-container">
                     <textarea class="prompt-input" placeholder="Describe your imagination in detail....." required
                         autofocus></textarea>
-                    <button class="prompt-btn">
+                    <button class="prompt-btn" type="button">  
                         <i class="fa-solid fa-dice"></i>
                     </button>
                 </div>
 
                 <!-- prompt Actions/Buttons-->
 
-                <div class="prompt-actions">
+                <div class="prompt-actions"> 
                     <div class="select-wrapper">
                         <select class="custom-select">
                             <option value="" selected disabled>Select Model</option>
-                            <option value="black-forest-labs/FLUX.1-dev">FLUX.1-dev</option>
-                            <option value="black-forest-labs/FLUX.1-schne11">FLUX.1-schne11</option>
-                            <option value="stabilityai/stable-diffusion-x1-base-1.0">Stable Diffusion XL</option>
+                            <option value="black-forest-labs/FLUX.l-dev">FLUX.1-dev</option>
+                            <option value="black-forest-labs/FLUX.l-schnell">FLUX.1-schnell</option>
+                            <option value="stabilityai/stable-diffusion-xl-base-1.0">Stable Diffusion XL</option>
                             <option value="runwayml/stable-diffusions-v1-v5">Stable Diffusion v1.5</option>
                             <option value="prompthero/openjourney">Openjourney</option>
                         </select>
@@ -72,10 +72,14 @@
                     </button>
                 </div>
                 <div class="gallery-grid">
-                    <div class="img-card">
+                    <div class="img-card loading">
+                        <div class="status-container">
+                            <div class="spinner"></div>
+                            <p class="status-text">Generating...</p>
+                        </div>
                         <img src="test.png" alt="" class="result-img">
                         <div class="img-overlay">
-                            <button class="img-download-btn">
+                            <button type="button" class="img-download-btn">
                                 <i class="fa-solid fa-download"></i>
                             </button>
                         </div>
@@ -83,7 +87,7 @@
                     <div class="img-card">
                         <img src="test.png" alt="" class="result-img">
                         <div class="img-overlay">
-                            <button class="img-download-btn">
+                            <button class="img-download-btn" type="button">
                                 <i class="fa-solid fa-download"></i>
                             </button>
                         </div>
@@ -91,7 +95,7 @@
                     <div class="img-card">
                         <img src="test.png" alt="" class="result-img">
                         <div class="img-overlay">
-                            <button class="img-download-btn">
+                            <button class="img-download-btn" type="button">
                                 <i class="fa-solid fa-download"></i>
                             </button>
                         </div>
@@ -99,7 +103,7 @@
                     <div class="img-card">
                         <img src="test.png" alt="" class="result-img">
                         <div class="img-overlay">
-                            <button class="img-download-btn">
+                            <button class="img-download-btn" type="button">
                                 <i class="fa-solid fa-download"></i>
                             </button>
                         </div>
