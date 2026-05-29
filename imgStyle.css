@@ -114,10 +114,6 @@ body{
 .prompt-container .prompt-input{
     width: 100%;
     resize: vertical;
-
-    /* FIXED */
-    max-height: 250px;
-
     line-height: 1.6;
     font-size: 1.05rem;
     min-height: 120px;
@@ -173,10 +169,7 @@ body{
 
 .prompt-actions .select-wrapper::after{
     content: "\f078";
-
-    /* FIXED */
-    font-family: "Font Awesome 7 Free";
-
+    font-family: "Font Awesome 6 Free";
     font-weight: 900;
     position: absolute;
     right: 20px;
