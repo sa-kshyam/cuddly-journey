@@ -1,120 +1,177 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI IMAGE GENERATOR</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-    <link rel="stylesheet" href="imgStyle.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Visionary — AI Image Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="imgStyle.css" />
 </head>
-
 <body>
-    <div class="container">
-        <!-- header-->
-        <header class="header">
-            <div class="logo-wrapper">
-                <div class="logo">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i>
-                </div>
-                <h1>AI IMAGE GENERATOR</h1>
-            </div>
 
-            <button class="theme-toggle">
-                <i class="fa-solid fa-moon"></i>
-            </button>
-        </header>
-        <div class="main-content">
-            <form action="#" class="prompt-form">
-                <!--prompt container -->
-                <div class="prompt-container">
-                    <textarea class="prompt-input" placeholder="Describe your imagination in detail....." required
-                        autofocus></textarea>
-                    <button class="prompt-btn" type="button">  
-                        <i class="fa-solid fa-dice"></i>
-                    </button>
-                </div>
+  <div class="bg-texture"></div>
 
-                <!-- prompt Actions/Buttons-->
+  <div class="app-shell">
 
-                <div class="prompt-actions"> 
-                    <div class="select-wrapper">
-                        <select class="custom-select" id="model-select" required>
-                            <option value="" selected disabled>Select Model</option>
-                            <option value="black-forest-labs/FLUX.l-dev">FLUX.1-dev</option>
-                            <option value="black-forest-labs/FLUX.l-schnell">FLUX.1-schnell</option>
-                            <option value="stabilityai/stable-diffusion-xl-base-1.0">Stable Diffusion XL</option>
-                            <option value="runwayml/stable-diffusions-v1-v5">Stable Diffusion v1.5</option>
-                            <option value="prompthero/openjourney">Openjourney</option>
-                        </select>
-                    </div>
-                    <div class="select-wrapper">
-                        <select class="custom-select" id="count-select" required>
-                            <option value="" selected disabled>Image Count</option>
-                            <option value="1">1 Image</option>
-                            <option value="2">2 Image</option>
-                            <option value="3">3 Image</option>
-                            <option value="4">4 Image</option>
-                        </select>
-                    </div>
-                    <div class="select-wrapper">
-                        <select class="custom-select" id="ratio-select" required>
-                            <option value="" selected disabled>Aspect Ratio</option>
-                            <option value="1/1">Square(1:1)</option>
-                            <option value="16/9">Landscape (16:9)</option>
-                            <option value="9/16">Portrait (9:16)</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" class="generate-btn">
-                        <i class="fa-solid fa-wand-sparkles"></i>
-                        Generate
-                    </button>
-                </div>
-                <div class="gallery-grid">
-                    <div class="img-card loading">
-                        <div class="status-container">
-                            <div class="spinner"></div>
-                            <i class="fa-solid fa-triangle-exclamation" ></i>
-                            <p class="status-text">Generating...</p>
-                        </div>
-                        <img src="test.png" alt="" class="result-img">
-                        <div class="img-overlay">
-                            <button type="button" class="img-download-btn">
-                                <i class="fa-solid fa-download"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="img-card">
-                        <img src="test.png" alt="" class="result-img">
-                        <div class="img-overlay">
-                            <button class="img-download-btn" type="button">
-                                <i class="fa-solid fa-download"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="img-card">
-                        <img src="test.png" alt="" class="result-img">
-                        <div class="img-overlay">
-                            <button class="img-download-btn" type="button">
-                                <i class="fa-solid fa-download"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="img-card">
-                        <img src="test.png" alt="" class="result-img">
-                        <div class="img-overlay">
-                            <button class="img-download-btn" type="button">
-                                <i class="fa-solid fa-download"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-            </form>
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="logo">
+          <span class="logo-mark">V</span>
+          <span class="logo-text">isionary</span>
         </div>
-    </div>
-    <script src="imgScript.js"></script>
-</body>
 
+        <div class="theme-toggle" id="themeToggle">
+          <button class="theme-btn active" data-theme="dark">Dark</button>
+          <button class="theme-btn" data-theme="light">Light</button>
+          <button class="theme-btn" data-theme="sepia">Sepia</button>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">Model</div>
+        <div class="model-list" id="modelList">
+          <button class="model-item active" data-model="black-forest-labs/FLUX.1-schnell">
+            <span class="model-dot"></span>
+            <div class="model-info">
+              <span class="model-name">FLUX Schnell</span>
+              <span class="model-tag">Fast</span>
+            </div>
+          </button>
+          <button class="model-item" data-model="black-forest-labs/FLUX.1-dev">
+            <span class="model-dot"></span>
+            <div class="model-info">
+              <span class="model-name">FLUX Dev</span>
+              <span class="model-tag">Quality</span>
+            </div>
+          </button>
+          <button class="model-item" data-model="stabilityai/stable-diffusion-xl-base-1.0">
+            <span class="model-dot"></span>
+            <div class="model-info">
+              <span class="model-name">SDXL 1.0</span>
+              <span class="model-tag">Balanced</span>
+            </div>
+          </button>
+          <button class="model-item" data-model="runwayml/stable-diffusion-v1-5">
+            <span class="model-dot"></span>
+            <div class="model-info">
+              <span class="model-name">SD 1.5</span>
+              <span class="model-tag">Classic</span>
+            </div>
+          </button>
+          <button class="model-item" data-model="prompthero/openjourney-v4">
+            <span class="model-dot"></span>
+            <div class="model-info">
+              <span class="model-name">OpenJourney</span>
+              <span class="model-tag">Artistic</span>
+            </div>
+          </button>
+          <button class="model-item" data-model="Lykon/dreamshaper-8">
+            <span class="model-dot"></span>
+            <div class="model-info">
+              <span class="model-name">DreamShaper</span>
+              <span class="model-tag">Creative</span>
+            </div>
+          </button>
+        </div>
+
+        <div class="nav-section-label" style="margin-top: 28px;">Aspect Ratio</div>
+        <div class="ratio-grid" id="ratioGrid">
+          <button class="ratio-btn active" data-ratio="1:1" data-w="1024" data-h="1024">
+            <div class="ratio-icon ratio-square"></div>
+            <span>1 : 1</span>
+          </button>
+          <button class="ratio-btn" data-ratio="16:9" data-w="1216" data-h="640">
+            <div class="ratio-icon ratio-wide"></div>
+            <span>16 : 9</span>
+          </button>
+          <button class="ratio-btn" data-ratio="9:16" data-w="640" data-h="1216">
+            <div class="ratio-icon ratio-tall"></div>
+            <span>9 : 16</span>
+          </button>
+          <button class="ratio-btn" data-ratio="4:3" data-w="1024" data-h="768">
+            <div class="ratio-icon ratio-classic"></div>
+            <span>4 : 3</span>
+          </button>
+          <button class="ratio-btn" data-ratio="3:2" data-w="1024" data-h="640">
+            <div class="ratio-icon ratio-photo"></div>
+            <span>3 : 2</span>
+          </button>
+          <button class="ratio-btn" data-ratio="21:9" data-w="1344" data-h="576">
+            <div class="ratio-icon ratio-cinema"></div>
+            <span>21 : 9</span>
+          </button>
+        </div>
+
+        <div class="nav-section-label" style="margin-top: 28px;">Images</div>
+        <div class="count-selector" id="countSelector">
+          <button class="count-btn active" data-count="1">1</button>
+          <button class="count-btn" data-count="2">2</button>
+          <button class="count-btn" data-count="4">4</button>
+        </div>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-title">
+          <span class="topbar-label">Studio</span>
+          <span class="topbar-sep">/</span>
+          <span class="topbar-active" id="activeModelLabel">FLUX Schnell</span>
+        </div>
+        <div class="topbar-right">
+          <span class="status-dot" id="statusDot"></span>
+          <span class="status-text" id="statusText">Ready</span>
+        </div>
+      </header>
+
+      <div class="canvas-area" id="canvasArea">
+        <div class="canvas-empty" id="canvasEmpty">
+          <div class="empty-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <rect x="6" y="10" width="36" height="28" rx="3" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="16" cy="20" r="3" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M6 30l9-7 7 6 5-4 15 9" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <p class="empty-label">Your images will appear here</p>
+        </div>
+        <div class="image-grid" id="imageGrid"></div>
+        <div class="loading-screen" id="loadingScreen">
+          <div class="loading-ring"></div>
+          <span class="loading-label" id="loadingLabel">Generating</span>
+        </div>
+      </div>
+
+      <div class="prompt-panel">
+        <div class="prompt-wrapper">
+          <textarea
+            id="promptInput"
+            class="prompt-textarea"
+            placeholder="Describe the image you want to create…"
+            rows="3"
+          ></textarea>
+          <button class="random-btn" id="randomBtn" title="Random prompt">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 4l3 3-3 3M2 20h4a4 4 0 004-4V8a4 4 0 014-4h7M18 20l3-3-3-3M2 4h4a4 4 0 014 4v4"/>
+            </svg>
+          </button>
+        </div>
+        <div class="prompt-actions">
+          <span class="char-count" id="charCount">0 / 500</span>
+          <button class="btn-clear" id="clearBtn">Clear</button>
+          <button class="btn-generate" id="generateBtn">
+            <span class="btn-text">Generate</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+  <script src="imgScript.js"></script>
+</body>
 </html>
